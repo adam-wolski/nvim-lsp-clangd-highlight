@@ -124,7 +124,7 @@ end
 
 function M.on_init(config)
 	clangd_scopes = config.server_capabilities.semanticHighlighting.scopes
-	config.callbacks['textDocument/semanticHighlighting'] = highlight
+	config.handlers['textDocument/semanticHighlighting'] = highlight
 end
 
 function M.clear_highlight()
