@@ -46,7 +46,7 @@ Add to init file:
 lua << EOF
 local clangd_nvim = require'clangd_nvim'
 
-require'nvim_lsp'.clangd.setup{
+require'lspconfig'.clangd.setup{
     capabilities = {
         textDocument = {
             semanticHighlightingCapabilities = {
