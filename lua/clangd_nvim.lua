@@ -82,11 +82,20 @@ end
 
 
 local function highlight(_,_,result,_)
+  if M.debug then
+    print("Highlight called")
+  end
+
 	if not result or not M.enabled then
 		return
 	end
 
 	local uri = result.textDocument.uri
+
+  if M.debug then
+    print("Uri: " .. uri)
+  end
+
   local file = ""
   if vim.fn.exists('win32') then
     -- uri starts with file:// and then the path but path always starts with /
@@ -101,8 +110,17 @@ local function highlight(_,_,result,_)
 
 	for _,bufnum in ipairs(vim.api.nvim_list_bufs()) do
 		local buf_name = vim.api.nvim_buf_get_name(bufnum)
-		-- print(buf_name,file)
+
+    if M.debug then
+		  print(buf_name,file)
+    end
+
 		if file==buf_name then
+      
+      if M.debug then
+        print("Highlighting buffer")
+      end
+
 			local references = {}
 			local references_index = 1
 			for _, token in ipairs(result.lines) do
@@ -135,6 +153,10 @@ end
 function M.on_init(config)
 	clangd_scopes = config.server_capabilities.semanticHighlighting.scopes
 	config.handlers['textDocument/semanticHighlighting'] = highlight
+
+  if M.debug then
+    print("On init called")
+  end
 end
 
 function M.clear_highlight()
