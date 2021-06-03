@@ -87,7 +87,17 @@ local function highlight(_,_,result,_)
 	end
 
 	local uri = result.textDocument.uri
-	local file = string.gsub(uri,"file://","")
+  local file = ""
+  if vim.fn.exists('win32') then
+    -- uri starts with file:// and then the path but path always starts with /
+    -- On windows we don't want to start the path with starting "/"
+    -- This ends up giving us path like /C:/rest/of/the/path
+    file = string.gsub(uri, 'file:///' , "")
+    -- nvim_buf_get_name will return paths with "\" separators
+    file = string.gsub(file, '/', '\\')
+  else
+    file = string.gsub(uri, 'file://' , "")
+  end
 
 	for _,bufnum in ipairs(vim.api.nvim_list_bufs()) do
 		local buf_name = vim.api.nvim_buf_get_name(bufnum)
