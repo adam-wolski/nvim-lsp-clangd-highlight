@@ -20,7 +20,7 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 -- SOFTWARE.
 
-local base64 = require'clangd_nvim/base64_decode'
+local base64 = require'nvim-lsp-clangd-highlight/base64_decode'
 local highlight = require'vim/highlight'
 
 local M = {}

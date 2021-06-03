@@ -20,20 +20,20 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
-if exists('g:loaded_clangd_nvim')
+if exists('g:loaded_nvim_lsp_clangd_highlight')
 	finish
 endif
 
 
 " Load Syntax file
-augroup clangd_nvim
+augroup nvim_lsp_clangd_highlight
 	autocmd!
-	autocmd VimEnter,ColorScheme * runtime syntax/clangd_nvim.vim
+	autocmd VimEnter,ColorScheme * runtime syntax/nvim_lsp_clangd_highlight.vim
 augroup END
 
 " Load Syntax file
 if v:vim_did_enter
-	runtime syntax/clangd_nvim.vim
+	runtime syntax/nvim_lsp_clangd_highlight.vim
 endif
 
-let g:loaded_clangd_nvim = v:true
+let g:loaded_nvim_lsp_clangd_highlight = v:true

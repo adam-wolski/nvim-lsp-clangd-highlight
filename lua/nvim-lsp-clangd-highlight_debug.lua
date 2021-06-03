@@ -20,6 +20,6 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 -- SOFTWARE.
 
-local clangd_nvim = require'clangd_nvim'
-clangd_nvim.debug = true
-return clangd_nvim
+local nvim_lsp_clangd_highlight = require'nvim-lsp-clangd-highlight'
+nvim_lsp_clangd_highlight.debug = true
+return nvim_lsp_clangd_highlight

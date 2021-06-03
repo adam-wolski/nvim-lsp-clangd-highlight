@@ -1,15 +1,13 @@
-> DEPRECATED! Use [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) instead.
+# nvim-lsp-clangd-highlight
 
-# clangd-nvim
+[nvim-lsp-clangd-highlight](https://github.com/adam-wolski/nvim-lsp-clangd-highlight) uses [Neovim](https://github.com/neovim/neovim)'s build- in [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) to enable [clangd](https://clangd.llvm.org/)'s support for semantic highlighting.
 
->
-> Issues: see [gitlab](https://gitlab.com/robert-oleynik/clangd-nvim/-/issues/)
->
-
-[clangd-nvim](https://gitlab.com/robert-oleynik/clangd-nvim/) uses [Neovim](https://github.com/neovim/neovim)'s build- in [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) to enable [clangd](https://clangd.llvm.org/)'s support for semantic highlighting.
+It's a fork of deprecated [clangd-nvim](https://github.com/robert-oleynik/clangd-nvim) plugin.
+Big thanks to [Robert Oleynik](https://github.com/robert-oleynik)!
+I personally don't find treesitter highlighting to be enough for cpp so I intend to keep this plugin alive.
 
 ![](screenshots/lsp_comparision.png)
-Left: clangd-nvim + nvim-lsp; Right: no plugin
+Left: nvim-lsp-clangd-highlight + nvim-lsp; Right: no plugin
 
 ## Roadmap
 
@@ -36,7 +34,7 @@ Left: clangd-nvim + nvim-lsp; Right: no plugin
 " Required
 Plug 'neovim/nvim-lsp'
 " Plugin
-Plug 'robert-oleynik/clangd-nvim'
+Plug 'adam-wolski/nvim-lsp-clangd-highlight'
 ```
 
 ## Setup
@@ -44,7 +42,7 @@ Plug 'robert-oleynik/clangd-nvim'
 Add to init file:
 ```vim
 lua << EOF
-local clangd_nvim = require'clangd_nvim'
+local nvim_lsp_clangd_highlight = require'nvim-lsp-clangd-highlight'
 
 require'lspconfig'.clangd.setup{
     capabilities = {
@@ -54,7 +52,7 @@ require'lspconfig'.clangd.setup{
             }
         }
     },
-    on_init = clangd_nvim.on_init
+    on_init = nvim_lsp_clangd_highlight.on_init
 }
 EOF
 ```
@@ -68,22 +66,22 @@ EOF
 >
 
 ```lua
-lua require'clangd_nvim'.enable()
+lua require'nvim-lsp-clangd-highlight'.enable()
 ```
 
 **Disable semantic highlighting**
 ```lua
-lua require'clangd_nvim'.disable()
+lua require'nvim-lsp-clangd-highlight'.disable()
 ```
 
 **Reload current buffer's semantic highlight**
 ```lua
-lua require'clangd_nvim'.reload()
+lua require'nvim-lsp-clangd-highlight'.reload()
 ```
 
 **Clear current buffer's semantic highlight**
 ```lua
-lua require'clangd_nvim'.clear_highlight()
+lua require'nvim-lsp-clangd-highlight'.clear_highlight()
 ```
 
 ## Change Colors
