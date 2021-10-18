@@ -81,7 +81,7 @@ local function clear_references(bufnr)
 end
 
 
-local function highlight(_,_,result,_)
+local function highlight(_,result,_,_)
   if M.debug then
     print("Highlight called")
   end
